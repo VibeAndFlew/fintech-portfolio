@@ -1,57 +1,38 @@
-import { ArrowRightIcon, GitHubLogoIcon, TwitterLogoIcon } from '@radix-ui/react-icons';
+import { GitHubLogoIcon } from '@radix-ui/react-icons';
 import { useTranslations } from 'next-intl';
 
-import { badgeVariants } from '@/components/ui/badgeVariants';
-import { buttonVariants } from '@/components/ui/buttonVariants';
-import { CenteredHero } from '@/features/landing/CenteredHero';
-import { Section } from '@/features/landing/Section';
+import { badgeVariants } from '@/components/BadgeVariants';
+import { buttonVariants } from '@/components/buttonVariants';
 
-export const Hero = () => {
+const Hero = () => {
   const t = useTranslations('Hero');
 
   return (
-    <Section className="py-36">
-      <CenteredHero
-        banner={(
-          <a
-            className={badgeVariants()}
-            href="https://twitter.com/ixartz"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <TwitterLogoIcon className="mr-1 size-5" />
-            {' '}
-            {t('follow_twitter')}
-          </a>
-        )}
-        title={t.rich('title', {
-          important: chunks => (
-            <span className="bg-gradient-to-r from-indigo-500 via-purple-500 to-pink-500 bg-clip-text text-transparent">
-              {chunks}
-            </span>
-          ),
-        })}
-        description={t('description')}
-        buttons={(
-          <>
-            <a
-              className={buttonVariants({ variant: 'outline', size: 'lg' })}
-              href="https://github.com/ixartz/SaaS-Boilerplate"
-            >
-              <GitHubLogoIcon className="mr-2 size-5" />
-              {t('secondary_button')}
-            </a>
+    <section className="mx-auto max-w-screen-lg px-3 py-20 text-center">
+      <h1 className="text-5xl font-extrabold tracking-tight text-gray-900 sm:text-6xl">
+        Institutional-grade <span className="text-blue-600">financial infrastructure</span> for the modern web.
+      </h1>
+      <p className="mx-auto mt-6 max-w-2xl text-xl text-gray-500">
+        Secure, compliant, and lightning-fast APIs to manage global transactions, user accounts, and real-time ledger data.
+      </p>
 
-            <a
-              className={buttonVariants({ size: 'lg' })}
-              href="https://nextjs-boilerplate.com/nextjs-multi-tenant-saas-boilerplate"
-            >
-              {t('primary_button')}
-              <ArrowRightIcon className="ml-1 size-5" />
-            </a>
-          </>
-        )}
-      />
-    </Section>
+      <div className="mt-10 flex items-center justify-center gap-4">
+        <a
+          className={buttonVariants({ size: 'lg', className: 'bg-blue-600 hover:bg-blue-700' })}
+          href="/sign-up"
+        >
+          Open Dashboard
+        </a>
+        <a
+          className={buttonVariants({ variant: 'outline', size: 'lg' })}
+          href="https://github.com/your-username"
+        >
+          <GitHubLogoIcon className="mr-2 h-5 w-5" />
+          View Source Code
+        </a>
+      </div>
+    </section>
   );
 };
+
+export { Hero };
