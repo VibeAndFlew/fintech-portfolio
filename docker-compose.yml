@@ -1,0 +1,12 @@
+services:
+  saas-boilerplate:
+    build: .
+    restart: unless-stopped
+    networks:
+      - enterprise_net
+    ports:
+      - "3001:8080"
+networks:
+  enterprise_net:
+    external: true
+
